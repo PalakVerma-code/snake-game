@@ -142,3 +142,16 @@ body {
 #restartBtn:hover {
   background: #16a34a;
 }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;       /* page scroll disable */
+  touch-action: none;     /* browser ke default gestures disable */
+}
+
+.game-container {
+  touch-action: none;     /* important for swipe controls */
+}
+
