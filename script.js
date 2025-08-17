@@ -90,7 +90,7 @@ document.addEventListener("keydown", function(e){
     else if(e.key === "ArrowLeft" && velocityX !== 1){ velocityX = -1; velocityY = 0; }
 });
 
-// Touch controls for mobile
+// Touch controls for mobile :)
 let startX, startY, endX, endY;
 
 gameContainer.addEventListener("touchstart", e => {
@@ -105,12 +105,13 @@ gameContainer.addEventListener("touchend", e => {
     let diffX = endX - startX;
     let diffY = endY - startY;
 
-    if(Math.abs(diffX) > Math.abs(diffY)){
-        if(diffX > 0 && velocityX !== -1){ velocityX = 1; velocityY = 0; }
-        else if(diffX < 0 && velocityX !== 1){ velocityX = -1; velocityY = 0; }
+    // add minimum swipe distance (30px)
+    if (Math.abs(diffX) > Math.abs(diffY)) {
+        if (diffX > 30 && velocityX !== -1) { velocityX = 1; velocityY = 0; }  
+        else if (diffX < -30 && velocityX !== 1) { velocityX = -1; velocityY = 0; } 
     } else {
-        if(diffY > 0 && velocityY !== -1){ velocityX = 0; velocityY = 1; }
-        else if(diffY < 0 && velocityY !== 1){ velocityX = 0; velocityY = -1; }
+        if (diffY > 30 && velocityY !== -1) { velocityX = 0; velocityY = 1; }  
+        else if (diffY < -30 && velocityY !== 1) { velocityX = 0; velocityY = -1; } 
     }
 });
 
@@ -122,3 +123,4 @@ overlay.addEventListener("click", e => {
 // Start game
 generateFood();
 gameInterval = setInterval(renderGame, 150);
+
